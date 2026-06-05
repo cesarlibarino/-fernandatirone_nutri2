@@ -1,0 +1,437 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Desafio Reality da Nutri | 7ª Edição</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Plus Jakarta Sans',sans-serif;
+background:#f7f4ef;
+overflow-x:hidden;
+color:#1d1d1d;
+}
+
+/* BACKGROUND */
+
+.bg-soft{
+background:
+radial-gradient(circle at top left, rgba(209,182,141,.18), transparent 30%),
+radial-gradient(circle at bottom right, rgba(161,132,96,.12), transparent 30%);
+}
+
+/* GLASS */
+
+.glass{
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.5);
+}
+
+/* BUTTON */
+
+.primary-btn{
+background:#1f1f1f;
+color:white;
+transition:.3s;
+box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.primary-btn:hover{
+transform:translateY(-4px);
+background:#000;
+}
+
+/* CARD */
+
+.card{
+background:white;
+border:1px solid rgba(0,0,0,.06);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 60px rgba(0,0,0,.06);
+}
+
+/* TITLES */
+
+.title{
+line-height:.95;
+letter-spacing:-0.05em;
+}
+
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(50px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* EXPERT */
+
+.expert-image{
+border-radius:36px;
+box-shadow:0 40px 80px rgba(0,0,0,.12);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:3rem;
+line-height:.95;
+}
+
+.section-title{
+font-size:2.6rem !important;
+}
+
+}
+
+</style>
+
+</head>
+
+<body class="bg-soft">
+
+<!-- HERO -->
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+
+<div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-20 items-center">
+
+<!-- LEFT -->
+
+<div class="space-y-8 reveal">
+
+<div class="inline-flex items-center px-5 py-3 rounded-full glass text-sm uppercase tracking-[0.2em] font-semibold">
+7ª edição • emagrecimento sustentável
+</div>
+
+<h1 class="hero-title text-5xl md:text-7xl font-black title max-w-4xl">
+Emagreça sem viver presa em dietas extremas.
+</h1>
+
+<p class="text-zinc-600 text-xl leading-relaxed max-w-2xl">
+O Desafio Reality da Nutri foi criado para mulheres que querem voltar a se sentir bem no próprio corpo sem terrorismo nutricional, culpa ou restrições impossíveis de manter.
+</p>
+
+<div class="flex flex-wrap gap-5 pt-4">
+
+<a
+href="#comprar"
+class="primary-btn px-10 py-5 rounded-2xl font-bold text-lg"
+>
+QUERO PARTICIPAR
+</a>
+
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-10">
+
+<div>
+<h3 class="text-4xl font-black">7ª</h3>
+<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
+edição do desafio
+</p>
+</div>
+
+<div>
+<h3 class="text-4xl font-black">100%</h3>
+<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
+online
+</p>
+</div>
+
+<div>
+<h3 class="text-4xl font-black">Real</h3>
+<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
+mudança sustentável
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="relative reveal">
+
+<div class="absolute inset-0 bg-[#d8c0a6]/20 blur-[100px] rounded-full"></div>
+
+<img
+src="./expert.jpg"
+alt="Nutricionista"
+class="expert-image relative z-[2]"
+/>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IDENTIFICAÇÃO -->
+
+<section class="py-28">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div class="max-w-3xl mb-20 reveal">
+
+<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
+Você já sentiu isso?
+</span>
+
+<h2 class="section-title text-5xl font-black mt-6 title">
+Você começa motivada… mas nunca consegue manter.
+</h2>
+
+<p class="text-zinc-600 text-xl mt-8 leading-relaxed">
+Dietas restritivas, excesso de informação e protocolos impossíveis acabam fazendo você desistir antes mesmo de ver resultado.
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+<div class="card rounded-[28px] p-8 reveal">
+<h3 class="text-2xl font-bold mb-5">
+Começa e para
+</h3>
+<p class="text-zinc-500 leading-relaxed">
+Você vive recomeçando toda segunda-feira.
+</p>
+</div>
+
+<div class="card rounded-[28px] p-8 reveal">
+<h3 class="text-2xl font-bold mb-5">
+Sem constância
+</h3>
+<p class="text-zinc-500 leading-relaxed">
+A rotina nunca parece sustentável.
+</p>
+</div>
+
+<div class="card rounded-[28px] p-8 reveal">
+<h3 class="text-2xl font-bold mb-5">
+Culpa ao comer
+</h3>
+<p class="text-zinc-500 leading-relaxed">
+Você sente que está sempre “falhando”.
+</p>
+</div>
+
+<div class="card rounded-[28px] p-8 reveal">
+<h3 class="text-2xl font-bold mb-5">
+Resultado temporário
+</h3>
+<p class="text-zinc-500 leading-relaxed">
+Emagrece um pouco… e depois volta tudo.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MÉTODO -->
+
+<section class="py-32 bg-white">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div class="text-center max-w-4xl mx-auto mb-24 reveal">
+
+<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
+Método do desafio
+</span>
+
+<h2 class="text-5xl md:text-6xl font-black mt-6 title">
+Não é mais uma dieta.
+</h2>
+
+<p class="text-zinc-600 text-xl mt-8 leading-relaxed">
+O desafio foi criado para gerar mudança real através de rotina, estratégia, suporte e hábitos possíveis de manter.
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="card rounded-[32px] p-10 reveal">
+
+<h3 class="text-3xl font-bold mb-6">
+Rotina prática
+</h3>
+
+<p class="text-zinc-500 leading-relaxed">
+Aplicável na vida real sem precisar viver em função da dieta.
+</p>
+
+</div>
+
+<div class="card rounded-[32px] p-10 reveal">
+
+<h3 class="text-3xl font-bold mb-6">
+Acompanhamento
+</h3>
+
+<p class="text-zinc-500 leading-relaxed">
+Você não faz sozinha. Existe direcionamento e suporte.
+</p>
+
+</div>
+
+<div class="card rounded-[32px] p-10 reveal">
+
+<h3 class="text-3xl font-bold mb-6">
+Constância
+</h3>
+
+<p class="text-zinc-500 leading-relaxed">
+O foco não é perfeição. É continuidade sustentável.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BENEFÍCIOS -->
+
+<section class="py-32">
+
+<div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+
+<div class="reveal">
+
+<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
+O que você vai conquistar
+</span>
+
+<h2 class="text-5xl font-black mt-6 title">
+Mais leveza, autoestima e controle da sua rotina.
+</h2>
+
+</div>
+
+<div class="space-y-6 reveal">
+
+<div class="glass rounded-3xl p-8">
+✔ Emagrecimento sustentável
+</div>
+
+<div class="glass rounded-3xl p-8">
+✔ Mais constância na alimentação
+</div>
+
+<div class="glass rounded-3xl p-8">
+✔ Menos culpa e ansiedade alimentar
+</div>
+
+<div class="glass rounded-3xl p-8">
+✔ Mais disposição e energia
+</div>
+
+<div class="glass rounded-3xl p-8">
+✔ Mudança possível de manter
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section id="comprar" class="py-32 bg-[#1b1b1b] text-white">
+
+<div class="max-w-4xl mx-auto px-6 text-center reveal">
+
+<span class="uppercase tracking-[0.2em] text-sm font-semibold text-[#d6b08d]">
+7ª edição aberta
+</span>
+
+<h2 class="text-5xl md:text-7xl font-black mt-8 title">
+Sua transformação pode começar agora.
+</h2>
+
+<p class="text-zinc-400 text-xl leading-relaxed mt-10 max-w-2xl mx-auto">
+Clique no botão abaixo e participe do Desafio Reality da Nutri.
+</p>
+
+<a
+href="https://chk.eduzz.com/6W4G565A0Z"
+class="inline-flex mt-14 primary-btn px-12 py-6 rounded-2xl font-black text-lg"
+>
+QUERO ENTRAR NO DESAFIO
+</a>
+
+</div>
+
+</section>
+
+<script>
+
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+
+reveals.forEach((element)=>{
+
+const windowHeight = window.innerHeight;
+const elementTop = element.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 80){
+element.classList.add('active');
+}
+
+});
+
+}
+
+window.addEventListener('scroll', revealOnScroll);
+
+revealOnScroll();
+
+</script>
+
+</body>
+</html>
+```
