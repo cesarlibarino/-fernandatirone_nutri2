@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,7 +10,7 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,67 +25,134 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Plus Jakarta Sans',sans-serif;
-background:#f7f4ef;
+font-family:'Manrope',sans-serif;
+background:#0f1115;
 overflow-x:hidden;
-color:#1d1d1d;
+color:#f5f5f5;
 }
 
 /* BACKGROUND */
 
-.bg-soft{
+body::before{
+content:'';
+position:fixed;
+inset:0;
+
 background:
-radial-gradient(circle at top left, rgba(209,182,141,.18), transparent 30%),
-radial-gradient(circle at bottom right, rgba(161,132,96,.12), transparent 30%);
+radial-gradient(circle at top left, rgba(190,155,120,.12), transparent 28%),
+radial-gradient(circle at bottom right, rgba(220,185,145,.08), transparent 30%);
+
+pointer-events:none;
+z-index:-2;
+}
+
+/* GRID */
+
+.grid-overlay{
+background-image:
+linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+background-size:40px 40px;
+}
+
+/* WATERMARK */
+
+.watermark{
+position:absolute;
+inset:0;
+
+background-image:
+linear-gradient(rgba(15,17,21,.92), rgba(15,17,21,.96)),
+url('./expert.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+opacity:.10;
+
+pointer-events:none;
+z-index:0;
+}
+
+/* GLOW */
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:999px;
+background:rgba(193,158,126,.12);
+filter:blur(120px);
+pointer-events:none;
+z-index:1;
 }
 
 /* GLASS */
 
 .glass{
-background:rgba(255,255,255,.55);
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.06);
 backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.5);
-}
-
-/* BUTTON */
-
-.primary-btn{
-background:#1f1f1f;
-color:white;
-transition:.3s;
-box-shadow:0 20px 60px rgba(0,0,0,.12);
-}
-
-.primary-btn:hover{
-transform:translateY(-4px);
-background:#000;
 }
 
 /* CARD */
 
 .card{
-background:white;
-border:1px solid rgba(0,0,0,.06);
-transition:.35s;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.06);
+transition:.4s;
+backdrop-filter:blur(20px);
 }
 
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 30px 60px rgba(0,0,0,.06);
+transform:translateY(-8px);
+border-color:rgba(193,158,126,.28);
+box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+/* BUTTON */
+
+.primary-btn{
+background:linear-gradient(135deg,#D7B08A,#B8926B);
+color:#111;
+transition:.35s;
+box-shadow:0 20px 60px rgba(215,176,138,.18);
+}
+
+.primary-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 25px 70px rgba(215,176,138,.28);
 }
 
 /* TITLES */
 
-.title{
-line-height:.95;
-letter-spacing:-0.05em;
+.section-title{
+line-height:.92;
+letter-spacing:-0.06em;
+}
+
+/* TEXT */
+
+.soft-text{
+color:#a7adb7;
+}
+
+/* IMAGE */
+
+.expert-image{
+border-radius:38px;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 50px 100px rgba(0,0,0,.35);
+position:relative;
+z-index:3;
 }
 
 /* REVEAL */
 
 .reveal{
 opacity:0;
-transform:translateY(50px);
+transform:translateY(60px);
 transition:1s ease;
 }
 
@@ -93,11 +161,28 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* EXPERT */
+/* FLOAT */
 
-.expert-image{
-border-radius:36px;
-box-shadow:0 40px 80px rgba(0,0,0,.12);
+.float{
+animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-12px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+/* FAQ */
+
+.faq-item{
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 /* MOBILE */
@@ -105,12 +190,17 @@ box-shadow:0 40px 80px rgba(0,0,0,.12);
 @media(max-width:768px){
 
 .hero-title{
-font-size:3rem;
+font-size:3.2rem;
 line-height:.95;
 }
 
 .section-title{
-font-size:2.6rem !important;
+font-size:3rem !important;
+}
+
+.expert-image{
+max-height:560px;
+object-fit:cover;
 }
 
 }
@@ -119,61 +209,93 @@ font-size:2.6rem !important;
 
 </head>
 
-<body class="bg-soft">
+<body class="grid-overlay">
 
 <!-- HERO -->
 
-<section class="relative min-h-screen flex items-center overflow-hidden">
+<section class="relative min-h-screen overflow-hidden flex items-center">
 
-<div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-20 items-center">
+<div class="watermark"></div>
+
+<div class="glow top-[-200px] left-[-100px]"></div>
+
+<div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-20 items-center relative z-[2]">
 
 <!-- LEFT -->
 
-<div class="space-y-8 reveal">
+<div class="space-y-10 reveal">
 
-<div class="inline-flex items-center px-5 py-3 rounded-full glass text-sm uppercase tracking-[0.2em] font-semibold">
-7ª edição • emagrecimento sustentável
+<div class="inline-flex items-center gap-3 px-5 py-3 rounded-full glass text-sm uppercase tracking-[0.25em] text-[#D7B08A] font-semibold">
+7ª edição • desafio online
 </div>
 
-<h1 class="hero-title text-5xl md:text-7xl font-black title max-w-4xl">
-Emagreça sem viver presa em dietas extremas.
+<h1 class="hero-title text-5xl md:text-7xl font-black section-title max-w-4xl">
+Emagreça sem viver presa no ciclo da culpa, restrição e recomeços.
 </h1>
 
-<p class="text-zinc-600 text-xl leading-relaxed max-w-2xl">
-O Desafio Reality da Nutri foi criado para mulheres que querem voltar a se sentir bem no próprio corpo sem terrorismo nutricional, culpa ou restrições impossíveis de manter.
+<p class="soft-text text-xl leading-relaxed max-w-2xl">
+O Desafio Reality da Nutri foi criado para mulheres que querem voltar a se sentir bem no próprio corpo através de uma rotina mais leve, possível e sustentável.
 </p>
+
+<div class="grid sm:grid-cols-2 gap-4 pt-2">
+
+<div class="glass rounded-2xl p-5">
+<p class="font-semibold">
+✔ Sem terrorismo nutricional
+</p>
+</div>
+
+<div class="glass rounded-2xl p-5">
+<p class="font-semibold">
+✔ Mudança sustentável
+</p>
+</div>
+
+<div class="glass rounded-2xl p-5">
+<p class="font-semibold">
+✔ Rotina possível de manter
+</p>
+</div>
+
+<div class="glass rounded-2xl p-5">
+<p class="font-semibold">
+✔ Acompanhamento próximo
+</p>
+</div>
+
+</div>
 
 <div class="flex flex-wrap gap-5 pt-4">
 
 <a
-href="#comprar"
-class="primary-btn px-10 py-5 rounded-2xl font-bold text-lg"
+href="https://chk.eduzz.com/6W4G565A0Z"
+class="primary-btn px-10 py-5 rounded-2xl font-black text-lg"
 >
 QUERO PARTICIPAR
 </a>
 
 </div>
 
-<div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-10">
+<div class="grid grid-cols-3 gap-8 pt-8">
 
 <div>
-<h3 class="text-4xl font-black">7ª</h3>
-<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
-edição do desafio
+<h3 class="text-4xl font-black text-[#D7B08A]">7ª</h3>
+<p class="soft-text text-sm uppercase tracking-[0.2em] mt-2">
+edição
 </p>
 </div>
 
 <div>
-<h3 class="text-4xl font-black">100%</h3>
-<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
-online
+<h3 class="text-4xl font-black">Online</h3>
+<p class="soft-text text-sm uppercase tracking-[0.2em] mt-2">
+acesso imediato
 </p>
 </div>
 
 <div>
-<h3 class="text-4xl font-black">Real</h3>
-<p class="text-zinc-500 mt-2 text-sm uppercase tracking-wider">
-mudança sustentável
+<h3 class="text-4xl font-black text-[#D7B08A]">Real</h3>
+<p class="soft-text text-sm uppercase tracking-[0.2em] mt-2">
+mudança possível
 </p>
 </div>
 
@@ -183,14 +305,20 @@ mudança sustentável
 
 <!-- RIGHT -->
 
-<div class="relative reveal">
+<div class="relative flex justify-center reveal">
 
-<div class="absolute inset-0 bg-[#d8c0a6]/20 blur-[100px] rounded-full"></div>
+<div class="absolute w-[420px] h-[420px] rounded-full bg-[#D7B08A]/20 blur-[120px]"></div>
+
+<div class="absolute top-6 right-0 glass px-6 py-4 rounded-2xl z-[5]">
+<p class="text-sm uppercase tracking-[0.25em] text-[#D7B08A] font-semibold">
+Emagrecimento sustentável
+</p>
+</div>
 
 <img
 src="./expert.jpg"
 alt="Nutricionista"
-class="expert-image relative z-[2]"
+class="expert-image float relative"
 />
 
 </div>
@@ -199,63 +327,65 @@ class="expert-image relative z-[2]"
 
 </section>
 
-<!-- IDENTIFICAÇÃO -->
+<!-- DOR -->
 
-<section class="py-28">
+<section class="relative py-36 overflow-hidden">
 
-<div class="max-w-6xl mx-auto px-6">
+<div class="watermark"></div>
 
-<div class="max-w-3xl mb-20 reveal">
+<div class="max-w-6xl mx-auto px-6 relative z-[2]">
 
-<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
-Você já sentiu isso?
+<div class="max-w-3xl mb-24 reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+Você provavelmente já passou por isso
 </span>
 
-<h2 class="section-title text-5xl font-black mt-6 title">
-Você começa motivada… mas nunca consegue manter.
+<h2 class="text-5xl md:text-6xl font-black mt-6 section-title">
+Você tenta mudar… mas nunca consegue sustentar.
 </h2>
 
-<p class="text-zinc-600 text-xl mt-8 leading-relaxed">
-Dietas restritivas, excesso de informação e protocolos impossíveis acabam fazendo você desistir antes mesmo de ver resultado.
+<p class="soft-text text-xl leading-relaxed mt-10">
+Dietas extremamente restritivas, excesso de informação e cobranças irreais fazem você acreditar que o problema é falta de disciplina — quando, na verdade, o problema está no método.
 </p>
 
 </div>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-<div class="card rounded-[28px] p-8 reveal">
+<div class="card rounded-[30px] p-8 reveal">
 <h3 class="text-2xl font-bold mb-5">
-Começa e para
+Você recomeça toda semana
 </h3>
-<p class="text-zinc-500 leading-relaxed">
-Você vive recomeçando toda segunda-feira.
+<p class="soft-text leading-relaxed">
+Sempre motivada no início… até a rotina desandar novamente.
 </p>
 </div>
 
-<div class="card rounded-[28px] p-8 reveal">
-<h3 class="text-2xl font-bold mb-5">
-Sem constância
-</h3>
-<p class="text-zinc-500 leading-relaxed">
-A rotina nunca parece sustentável.
-</p>
-</div>
-
-<div class="card rounded-[28px] p-8 reveal">
+<div class="card rounded-[30px] p-8 reveal">
 <h3 class="text-2xl font-bold mb-5">
 Culpa ao comer
 </h3>
-<p class="text-zinc-500 leading-relaxed">
-Você sente que está sempre “falhando”.
+<p class="soft-text leading-relaxed">
+A alimentação vira um peso emocional constante.
 </p>
 </div>
 
-<div class="card rounded-[28px] p-8 reveal">
+<div class="card rounded-[30px] p-8 reveal">
 <h3 class="text-2xl font-bold mb-5">
-Resultado temporário
+Resultados que nunca duram
 </h3>
-<p class="text-zinc-500 leading-relaxed">
-Emagrece um pouco… e depois volta tudo.
+<p class="soft-text leading-relaxed">
+Você emagrece por um tempo e depois volta ao início.
+</p>
+</div>
+
+<div class="card rounded-[30px] p-8 reveal">
+<h3 class="text-2xl font-bold mb-5">
+Falta de constância
+</h3>
+<p class="soft-text leading-relaxed">
+Você sente que nunca consegue manter uma rotina equilibrada.
 </p>
 </div>
 
@@ -265,65 +395,25 @@ Emagrece um pouco… e depois volta tudo.
 
 </section>
 
-<!-- MÉTODO -->
+<!-- QUEBRA -->
 
-<section class="py-32 bg-white">
+<section class="py-36 relative overflow-hidden">
 
-<div class="max-w-6xl mx-auto px-6">
+<div class="max-w-5xl mx-auto px-6 text-center">
 
-<div class="text-center max-w-4xl mx-auto mb-24 reveal">
+<div class="reveal">
 
-<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
-Método do desafio
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+O diferencial do desafio
 </span>
 
-<h2 class="text-5xl md:text-6xl font-black mt-6 title">
-Não é mais uma dieta.
+<h2 class="text-5xl md:text-7xl font-black mt-8 section-title">
+Isso não é mais uma dieta da internet.
 </h2>
 
-<p class="text-zinc-600 text-xl mt-8 leading-relaxed">
-O desafio foi criado para gerar mudança real através de rotina, estratégia, suporte e hábitos possíveis de manter.
+<p class="soft-text text-2xl leading-relaxed mt-12 max-w-4xl mx-auto">
+O foco do Desafio Reality da Nutri não é perfeição. É criar uma rotina possível de manter, com mais equilíbrio, clareza alimentar e constância — sem extremismos.
 </p>
-
-</div>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<div class="card rounded-[32px] p-10 reveal">
-
-<h3 class="text-3xl font-bold mb-6">
-Rotina prática
-</h3>
-
-<p class="text-zinc-500 leading-relaxed">
-Aplicável na vida real sem precisar viver em função da dieta.
-</p>
-
-</div>
-
-<div class="card rounded-[32px] p-10 reveal">
-
-<h3 class="text-3xl font-bold mb-6">
-Acompanhamento
-</h3>
-
-<p class="text-zinc-500 leading-relaxed">
-Você não faz sozinha. Existe direcionamento e suporte.
-</p>
-
-</div>
-
-<div class="card rounded-[32px] p-10 reveal">
-
-<h3 class="text-3xl font-bold mb-6">
-Constância
-</h3>
-
-<p class="text-zinc-500 leading-relaxed">
-O foco não é perfeição. É continuidade sustentável.
-</p>
-
-</div>
 
 </div>
 
@@ -333,42 +423,78 @@ O foco não é perfeição. É continuidade sustentável.
 
 <!-- BENEFÍCIOS -->
 
-<section class="py-32">
+<section class="relative py-36 overflow-hidden">
 
-<div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+<div class="watermark"></div>
 
-<div class="reveal">
+<div class="max-w-7xl mx-auto px-6 relative z-[2]">
 
-<span class="uppercase tracking-[0.2em] text-sm font-semibold text-zinc-500">
-O que você vai conquistar
+<div class="max-w-3xl mb-24 reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+O que você vai sentir
 </span>
 
-<h2 class="text-5xl font-black mt-6 title">
-Mais leveza, autoestima e controle da sua rotina.
+<h2 class="text-5xl md:text-6xl font-black mt-6 section-title">
+Uma transformação física e emocional.
 </h2>
 
 </div>
 
-<div class="space-y-6 reveal">
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-<div class="glass rounded-3xl p-8">
-✔ Emagrecimento sustentável
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Mais leveza
+</h3>
+<p class="soft-text leading-relaxed">
+Sem viver em guerra com a comida ou com o próprio corpo.
+</p>
 </div>
 
-<div class="glass rounded-3xl p-8">
-✔ Mais constância na alimentação
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Mais autoestima
+</h3>
+<p class="soft-text leading-relaxed">
+Volte a se sentir bonita, confiante e segura.
+</p>
 </div>
 
-<div class="glass rounded-3xl p-8">
-✔ Menos culpa e ansiedade alimentar
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Mais energia
+</h3>
+<p class="soft-text leading-relaxed">
+Uma rotina alimentar que faz você se sentir melhor no dia a dia.
+</p>
 </div>
 
-<div class="glass rounded-3xl p-8">
-✔ Mais disposição e energia
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Mais constância
+</h3>
+<p class="soft-text leading-relaxed">
+Sem protocolos impossíveis de seguir.
+</p>
 </div>
 
-<div class="glass rounded-3xl p-8">
-✔ Mudança possível de manter
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Mais clareza
+</h3>
+<p class="soft-text leading-relaxed">
+Entenda como se alimentar sem excesso de regras.
+</p>
+</div>
+
+<div class="card rounded-[32px] p-10 reveal">
+<h3 class="text-3xl font-bold mb-6">
+Resultados sustentáveis
+</h3>
+<p class="soft-text leading-relaxed">
+Mudanças possíveis de manter a longo prazo.
+</p>
 </div>
 
 </div>
@@ -377,29 +503,250 @@ Mais leveza, autoestima e controle da sua rotina.
 
 </section>
 
-<!-- CTA -->
+<!-- SOBRE -->
 
-<section id="comprar" class="py-32 bg-[#1b1b1b] text-white">
+<section class="py-36 overflow-hidden relative">
 
-<div class="max-w-4xl mx-auto px-6 text-center reveal">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 
-<span class="uppercase tracking-[0.2em] text-sm font-semibold text-[#d6b08d]">
-7ª edição aberta
+<div class="reveal">
+
+<img
+src="./expert.jpg"
+alt="Nutricionista"
+class="expert-image"
+/>
+
+</div>
+
+<div class="space-y-8 reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+Sobre a nutricionista
 </span>
 
-<h2 class="text-5xl md:text-7xl font-black mt-8 title">
-Sua transformação pode começar agora.
+<h2 class="text-5xl font-black section-title">
+Uma abordagem mais leve, humana e sustentável.
 </h2>
 
-<p class="text-zinc-400 text-xl leading-relaxed mt-10 max-w-2xl mx-auto">
-Clique no botão abaixo e participe do Desafio Reality da Nutri.
+<p class="soft-text text-lg leading-relaxed">
+Com uma abordagem voltada para equilíbrio e constância, o desafio foi pensado para mulheres que desejam emagrecer sem viver presas em protocolos extremos.
+</p>
+
+<p class="soft-text text-lg leading-relaxed">
+A proposta é trazer mais clareza alimentar, acolhimento e uma estratégia possível de aplicar na rotina real.
+</p>
+
+<p class="soft-text text-lg leading-relaxed">
+Sem culpa, sem terrorismo nutricional e sem a sensação constante de estar “falhando”.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROVA -->
+
+<section class="relative py-36 overflow-hidden">
+
+<div class="watermark"></div>
+
+<div class="max-w-6xl mx-auto px-6 relative z-[2]">
+
+<div class="text-center max-w-4xl mx-auto mb-24 reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+Experiência percebida
+</span>
+
+<h2 class="text-5xl md:text-6xl font-black mt-6 section-title">
+Muito além da balança.
+</h2>
+
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="card rounded-[32px] p-10 reveal">
+<p class="soft-text leading-relaxed text-lg">
+“Pela primeira vez consegui seguir algo sem sentir que minha vida precisava parar.”
+</p>
+</div>
+
+<div class="card rounded-[32px] p-10 reveal">
+<p class="soft-text leading-relaxed text-lg">
+“Eu emagreci, mas o principal foi voltar a me sentir bem comigo mesma.”
+</p>
+</div>
+
+<div class="card rounded-[32px] p-10 reveal">
+<p class="soft-text leading-relaxed text-lg">
+“Sem pressão absurda. Foi leve, possível e muito mais sustentável.”
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- OFERTA -->
+
+<section class="py-36 relative overflow-hidden">
+
+<div class="max-w-5xl mx-auto px-6">
+
+<div class="glass rounded-[40px] p-12 md:p-20 reveal">
+
+<div class="text-center">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+O que está incluso
+</span>
+
+<h2 class="text-5xl md:text-6xl font-black mt-8 section-title">
+Tudo o que você precisa para começar.
+</h2>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 mt-20">
+
+<div class="card rounded-[28px] p-8">
+✔ Desafio completo
+</div>
+
+<div class="card rounded-[28px] p-8">
+✔ Acompanhamento
+</div>
+
+<div class="card rounded-[28px] p-8">
+✔ Direcionamento alimentar
+</div>
+
+<div class="card rounded-[28px] p-8">
+✔ Grupo exclusivo
+</div>
+
+<div class="card rounded-[28px] p-8">
+✔ Estratégia prática
+</div>
+
+<div class="card rounded-[28px] p-8">
+✔ Rotina aplicável
+</div>
+
+</div>
+
+<div class="text-center mt-20">
+
+<a
+href="https://chk.eduzz.com/6W4G565A0Z"
+class="primary-btn inline-flex px-12 py-6 rounded-2xl font-black text-lg"
+>
+QUERO ENTRAR NO DESAFIO
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="py-36 relative overflow-hidden">
+
+<div class="max-w-4xl mx-auto px-6">
+
+<div class="text-center mb-24 reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+Perguntas frequentes
+</span>
+
+<h2 class="text-5xl md:text-6xl font-black mt-6 section-title">
+Ainda com dúvidas?
+</h2>
+
+</div>
+
+<div class="space-y-8">
+
+<div class="faq-item pb-8 reveal">
+<h3 class="text-2xl font-bold mb-4">
+Não tenho tempo. Vou conseguir acompanhar?
+</h3>
+<p class="soft-text leading-relaxed">
+O desafio foi pensado para ser aplicável dentro da rotina real.
+</p>
+</div>
+
+<div class="faq-item pb-8 reveal">
+<h3 class="text-2xl font-bold mb-4">
+Já tentei várias vezes antes…
+</h3>
+<p class="soft-text leading-relaxed">
+A proposta aqui não é radicalizar. É construir constância.
+</p>
+</div>
+
+<div class="faq-item pb-8 reveal">
+<h3 class="text-2xl font-bold mb-4">
+Serve para iniciantes?
+</h3>
+<p class="soft-text leading-relaxed">
+Sim. O desafio foi pensado justamente para mulheres que querem começar de forma mais leve e sustentável.
+</p>
+</div>
+
+<div class="faq-item pb-8 reveal">
+<h3 class="text-2xl font-bold mb-4">
+Vou precisar seguir uma dieta extremamente restritiva?
+</h3>
+<p class="soft-text leading-relaxed">
+Não. A proposta do desafio é justamente fugir dos extremos.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA FINAL -->
+
+<section class="relative py-40 overflow-hidden">
+
+<div class="watermark"></div>
+
+<div class="glow bottom-[-200px] right-[-100px]"></div>
+
+<div class="max-w-4xl mx-auto px-6 text-center relative z-[2] reveal">
+
+<span class="uppercase tracking-[0.25em] text-sm font-semibold text-[#D7B08A]">
+7ª edição disponível
+</span>
+
+<h2 class="text-5xl md:text-7xl font-black mt-8 section-title">
+Sua transformação não precisa começar de forma extrema.
+</h2>
+
+<p class="soft-text text-2xl leading-relaxed mt-10 max-w-3xl mx-auto">
+Ela só precisa começar de uma forma que você consiga manter.
 </p>
 
 <a
 href="https://chk.eduzz.com/6W4G565A0Z"
-class="inline-flex mt-14 primary-btn px-12 py-6 rounded-2xl font-black text-lg"
+class="primary-btn inline-flex mt-16 px-14 py-7 rounded-2xl font-black text-lg"
 >
-QUERO ENTRAR NO DESAFIO
+QUERO PARTICIPAR AGORA
 </a>
 
 </div>
